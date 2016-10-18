@@ -1,35 +1,19 @@
-# Angular QuickStart Source
-[![Build Status][travis-badge]][travis-badge-url]
+## Prerequisitos
 
-This repository holds the TypeScript source code of the [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html),
-the foundation for most of the documentation samples and potentially a good starting point for your application.
-
-It's been extended with testing support so you can start writing tests immediately.
-
-**This is not the perfect arrangement for your application. It is not designed for production.
-It exists primarily to get you started quickly with learning and prototyping in Angular**
-
-We are unlikely to accept suggestions about how to grow this QuickStart into something it is not.
-Please keep that in mind before posting issues and PRs.
-
-## Prerequisites
-
-Node.js and npm are essential to Angular development. 
-    
-<a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">
-Get it now</a> if it's not already installed on your machine.
+Node.js y npm https://docs.npmjs.com/getting-started/installing-node
+Un IDE, les recomiendo Visual Studio Code https://code.visualstudio.com
  
-**Verify that you are running at least node `v4.x.x` and npm `3.x.x`**
-by running `node -v` and `npm -v` in a terminal/console window.
-Older versions produce errors.
-
-We recommend [nvm](https://github.com/creationix/nvm) for managing multiple versions of node and npm.
-
-## Create a new project based on the QuickStart
-
-Clone this repo into new project folder (e.g., `my-proj`).
+**Verficar versiones
 ```bash
-git clone  https://github.com/angular/quickstart  my-proj
+Node.js node -v
+NPM npm -v
+```
+
+## Descargar proyecto
+
+Clonemos este repositorio, para hacerlo abrimos una consola y nos ubicamos en el folder donde lo queremos descargar y ejecutamos
+```bash
+git clone  https://github.com/sebazburgos/AngularJs2-Workshop  AngularJs2
 cd my-proj
 ```
 
@@ -40,113 +24,52 @@ rm -rf .git  # non-Windows
 rd .git /S/Q # windows
 ```
 
-### Create a new git repo
-You could [start writing code](#start-development) now and throw it all away when you're done.
-If you'd rather preserve your work under source control, consider taking the following steps.
-
-Initialize this project as a *local git repo* and make the first commit:
+### Crear nuestro repositorio a partir de este
+Primero eliminemos todo rastro del repositorio anterior
+```bash
+rm -rf .git  # non-Windows
+rd .git /S/Q # windows
+```
+Luego creemos nuestro proyecto
 ```bash
 git init
 git add .
 git commit -m "Initial commit"
 ```
-
-Create a *remote repository* for this project on the service of your choice.
-
-Grab its address (e.g. *`https://github.com/<my-org>/my-proj.git`*) and push the *local repo* to the *remote*.
+Por ultimo creemos en github nuestro propio repositorio y realicemos nuestro primer commit 
+(Ejemplo: *`https://github.com/<usuario>/nombre-proyecto.git`*).
+Para esto debemos ejecutar los siguientes comandos.
 ```bash
-git remote add origin <repo-address>
+git remote add origin https://github.com/<usuario>/nombre-proyecto.git
 git push -u origin master
 ```
-## Install npm packages
+## Instalar dependencias
 
-> See npm and nvm version notes above
+Vamos a instalar todas las dependencias configuradas en `package.json`
 
-Install the npm packages described in the `package.json` and verify that it works:
-
-**Attention Windows Developers:  You must run all of these commands in administrator mode**.
+**Es necesario abrir una consola como administrador**.
 
 ```bash
 npm install
 npm start
 ```
 
-> If the `typings` folder doesn't show up after `npm install` please install them manually with:
-
-> `npm run typings -- install`
-
-The `npm start` command first compiles the application, 
-then simultaneously re-compiles and runs the `lite-server`.
-Both the compiler and the server watch for file changes.
-
-Shut it down manually with Ctrl-C.
-
-You're ready to write your application.
-
 ### npm scripts
 
-We've captured many of the most useful commands in npm scripts defined in the `package.json`:
+Esta es una breve descripción de algunos comandos pre-configurados en el archivo `package.json`:
 
-* `npm start` - runs the compiler and a server at the same time, both in "watch mode".
-* `npm run tsc` - runs the TypeScript compiler once.
-* `npm run tsc:w` - runs the TypeScript compiler in watch mode; the process keeps running, awaiting changes to TypeScript files and re-compiling when it sees them.
-* `npm run lite` - runs the [lite-server](https://www.npmjs.com/package/lite-server), a light-weight, static file server, written and maintained by
-[John Papa](https://github.com/johnpapa) and
-[Christopher Martin](https://github.com/cgmartin)
-with excellent support for Angular apps that use routing.
-* `npm run typings` - runs the typings tool.
-* `npm run postinstall` - called by *npm* automatically *after* it successfully completes package installation. This script installs the TypeScript definition files this app requires.
-Here are the test related scripts:
-* `npm test` - compiles, runs and watches the karma unit tests
-* `npm run e2e` - run protractor e2e tests, written in JavaScript (*e2e-spec.js)
+* `npm start` - Compila el código, ejecuta el servidor y actualiza los cambios.
+* `npm run tsc` - Ejecuta el compilador de Typescript
+* `npm run tsc:w` - Ejecuta el compilador de Typescript y siempre esta revisando cambios en el código para actualizarlos en servidor.
+* `npm run lite` - Inical el servidor local.
+* `npm run postinstall` - se ejecuta luego de instalar las dependencias con el fin de instalar las dependencias de Typescript
 
 ## Testing
-
-The QuickStart documentation doesn't discuss testing.
-This repo adds both karma/jasmine unit test and protractor end-to-end testing support.
-
-These tools are configured for specific conventions described below.
-
-*It is unwise and rarely possible to run the application, the unit tests, and the e2e tests at the same time.
-We recommend that you shut down one before starting another.*
-
-### Unit Tests
-TypeScript unit-tests are usually in the `app` folder. Their filenames must end in `.spec`.
-
-Look for the example `app/app.component.spec.ts`.
-Add more `.spec.ts` files as you wish; we configured karma to find them.
-
-Run it with `npm test`
-
-That command first compiles the application, then simultaneously re-compiles and runs the karma test-runner.
-Both the compiler and the karma watch for (different) file changes.
-
-Shut it down manually with Ctrl-C.
-
-Test-runner output appears in the terminal window.
-We can update our app and our tests in real-time, keeping a weather eye on the console for broken tests.
-Karma is occasionally confused and it is often necessary to shut down its browser or even shut the command down (Ctrl-C) and
-restart it. No worries; it's pretty quick.
-
-### End-to-end (E2E) Tests
-
-E2E tests are in the `e2e` directory, side by side with the `app` folder.
-Their filenames must end in `.e2e-spec.ts`.
-
-Look for the example `e2e/app.e2e-spec.ts`.
-Add more `.e2e-spec.js` files as you wish (although one usually suffices for small projects);
-we configured protractor to find them.
-
-Thereafter, run them with `npm run e2e`.
-
-That command first compiles, then simultaneously starts the Http-Server at `localhost:8080`
-and launches protractor.  
-
-The pass/fail test results appear at the bottom of the terminal window.
-A custom reporter (see `protractor.config.js`) generates a  `./_test-output/protractor-results.txt` file
-which is easier to read; this file is excluded from source control.
-
-Shut it down manually with Ctrl-C.
-
-[travis-badge]: https://travis-ci.org/angular/quickstart.svg?branch=master
-[travis-badge-url]: https://travis-ci.org/angular/quickstart
+Para ejecutar las pruebas unitarias escritas en karma ejecutamos el siguiente comando:
+```bash
+npm test
+```
+Para ejecutar las pruebas funcionales de protractor escritas en e2e-spec.js ejecutamos el siguiente comando:
+```bash
+npm run e2e
+```
