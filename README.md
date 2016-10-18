@@ -4,9 +4,16 @@ Node.js y npm https://docs.npmjs.com/getting-started/installing-node <br />
 Un IDE, les recomiendo Visual Studio Code https://code.visualstudio.com
  
 ** Verficar versiones
+
+Node.js
+
 ```bash
-Node.js node -v
-NPM npm -v
+node -v
+```
+NPM 
+
+```bash
+npm -v
 ```
 
 ## Descargar proyecto
