@@ -14,21 +14,20 @@ NPM npm -v
 Clonemos este repositorio, para hacerlo abrimos una consola y nos ubicamos en el folder donde lo queremos descargar y ejecutamos
 ```bash
 git clone  https://github.com/sebazburgos/AngularJs2-Workshop  AngularJs2
-cd my-proj
+cd AngularJs2
 ```
 
 ### Crear nuestro repositorio a partir de este
 
 Primero eliminemos todo rastro del repositorio anterior
 ```bash
-rm -rf .git  # non-Windows
 rd .git /S/Q # windows
 ```
 Luego creemos nuestro proyecto
 ```bash
 git init
 git add .
-git commit -m "Initial commit"
+git commit -m "Primer commit"
 ```
 Por ultimo creemos en github nuestro propio repositorio y realicemos nuestro primer commit <br />
 (Ejemplo: *`https://github.com/<usuario>/nombre-proyecto.git`*). <br />
